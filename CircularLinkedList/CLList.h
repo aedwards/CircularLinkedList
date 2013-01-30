@@ -20,7 +20,7 @@ public:
 		int count = 0;
 
 		if(head == NULL) {
-			cout << "List is empty." << endl;
+			cout << "List is empty.\n" << endl;
 			return 0;
 		}
 		else {
@@ -52,7 +52,7 @@ public:
 			cout << " --> ";
 			currentNode = currentNode->Next();
 		}
-		cout << currentNode->Data();	//prints the last element because the while loop will always exclude the end element. This is common of circular lists.
+		cout << currentNode->Data() << "\n\n\n";	//prints the last element because the while loop will always exclude the end element. This is common of circular lists.
 	}
 
 	//append new data to end of list
@@ -109,7 +109,51 @@ public:
 		//cout << newNode->Data();
 	}
 
+	//Delete the node at the end of the list
+	void DeleteTail() {
 
+		Node* tempNode = head;
+		Node* currentNode = head;
+
+		//empty list
+		if(head == NULL) {
+			cout << "List is empty. Deletion aborted.";
+			return;
+		}
+
+		while(currentNode->Next() != head) {
+			tempNode = currentNode;
+			currentNode = currentNode->Next();
+		}
+		tempNode->SetNext(head);	//set the new end nodes's next pointer to point to the head node.
+		//delete the last node and assign it to a null pointer so that ther will be no memory leaks.
+		delete currentNode;
+		currentNode = nullptr;
+		return;
+	}
+
+	//Delete the head node
+	void DeleteHead() {
+
+		Node* tempNode = head;
+		Node* currentNode = head;
+
+		//empty list
+		if(head == NULL) {
+			cout << "List is empty. Deletion aborted.";
+			return;
+		}
+
+		while(currentNode->Next() != head) {
+			currentNode = currentNode->Next();
+		}
+		head = tempNode->Next();
+		currentNode->SetNext(head);
+		delete tempNode;
+		tempNode = nullptr;
+		return;
+
+	}
 
 
 
