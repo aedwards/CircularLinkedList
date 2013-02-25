@@ -55,7 +55,7 @@ public:
 		cout << currentNode->Data() << "\n\n\n";	//prints the last element because the while loop will always exclude the end element. This is common of circular lists.
 	}
 
-	//append new data to end of list
+	//append new data to front of the list
 	void AppendToFront(int data) {
 		
 		Node* newNode = new Node();
@@ -84,7 +84,7 @@ public:
 	}
 
 
-	//Append data to beginning of list
+	//Append data to end of the list
 	void AppendToTail(int data) {
 
 		Node* newNode = new Node();
